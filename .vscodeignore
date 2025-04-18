@@ -1,0 +1,9 @@
+**/*.ts
+**/tsconfig.json
+tests/* 
+**/notes/**/*
+node_modules/**/*
+src/**/*
+Makefile
+*.config.js
+.gitignore
