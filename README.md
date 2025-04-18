@@ -4,7 +4,7 @@
 
 Mermaid Lens is a Visual Studio Code extension that provides a zoomable Mermaid diagram viewer. It allows you to view, zoom, and export Mermaid diagrams as PNG/SVG to file/clipboard directly within your Markdown file.
 
-Screenshoots
+![Screenshoot](./docs/screenshot_001.png)
 
 ## Features
 
