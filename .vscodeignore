@@ -1,7 +1,7 @@
 **/*.ts
 **/tsconfig.json
 tests/* 
-**/notes/**/*
+out/**/*.map
 node_modules/**/*
 src/**/*
 Makefile

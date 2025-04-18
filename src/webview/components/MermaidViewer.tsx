@@ -209,9 +209,7 @@ export const MermaidViewer: React.FC<Props> = ({ initialBlockInfo }) => {
   }, []);
 
   const handleResetZoom = useCallback(() => {
-    setViewerState(
-      (prev) => accessImageFrameCoords(prev).setScale(1).center().preventExceedBoundary().data,
-    );
+    setViewerState((prev) => accessImageFrameCoords(prev).reset().preventExceedBoundary().data);
   }, []);
 
   const handleFitToScreen = useCallback(() => {
