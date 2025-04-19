@@ -35,6 +35,12 @@ Alternatively, you can install it from the [Visual Studio Code Marketplace](http
 2. Click the "View Graph" code lens that appears above Mermaid code blocks
 3. The diagram will open in a side panel
 
+Change the export Mermaid graph theme:
+
+1. Open VS Code settings
+2. Search for `mermaidlens.exportMermaidTheme`
+3. Change the value from `auto` to `default`, `neutral`, `dark`, `forest`
+
 ## Development
 
 ### Prerequisites
