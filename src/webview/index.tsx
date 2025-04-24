@@ -7,6 +7,9 @@ import "./index.css";
 const root = createRoot(document.getElementById("root")!);
 root.render(
   <ThemeProvider>
-    <MermaidViewer initialBlockInfo={window.initialBlockInfo} />
+    <MermaidViewer
+      initialBlockInfo={window.initialBlockInfo}
+      pngResolution={window.exportPngResolution}
+    />
   </ThemeProvider>,
 );

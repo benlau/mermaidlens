@@ -7,6 +7,7 @@ declare global {
     };
     initialBlockInfo: MermaidBlockInfo;
     assetUrl: string;
+    exportPngResolution: number;
   }
 }
 

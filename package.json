@@ -48,6 +48,13 @@
             "forest"
           ],
           "description": "The theme to use when exporting Mermaid diagrams"
+        },
+        "mermaidlens.exportPngResolution": {
+          "type": "number",
+          "default": 2048,
+          "minimum": 256,
+          "maximum": 4096,
+          "description": "The resolution to use when exporting Mermaid diagrams to PNG (width and height will be scaled proportionally to fit within this resolution)"
         }
       }
     }

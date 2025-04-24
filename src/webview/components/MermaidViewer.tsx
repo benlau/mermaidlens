@@ -23,9 +23,10 @@ export const MIN_SCALE = 0.2;
 
 interface Props {
   initialBlockInfo: MermaidBlockInfo;
+  pngResolution: number;
 }
 
-export const MermaidViewer: React.FC<Props> = ({ initialBlockInfo }) => {
+export const MermaidViewer: React.FC<Props> = ({ initialBlockInfo, pngResolution }) => {
   const { colors, mermaidTheme, exportMermaidTheme } = useTheme();
   const [blockInfo, setBlockInfo] = useState(initialBlockInfo);
   const lastRenderedBlockInfo = useRef<MermaidBlockInfo | null>(null);
@@ -100,9 +101,21 @@ export const MermaidViewer: React.FC<Props> = ({ initialBlockInfo }) => {
       img.src = "data:image/svg+xml," + encodeURIComponent(svg);
 
       img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
+        const resolution = pngResolution;
+        const aspectRatio = img.width / img.height;
+
+        let width = resolution;
+        let height = resolution;
+
+        if (aspectRatio > 1) {
+          height = Math.round(resolution / aspectRatio);
+        } else {
+          width = Math.round(resolution * aspectRatio);
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
         const png = canvas.toDataURL("image/png");
         resolve(png);
       };
@@ -111,7 +124,7 @@ export const MermaidViewer: React.FC<Props> = ({ initialBlockInfo }) => {
         reject(new Error("Failed to load SVG image"));
       };
     });
-  }, [renderMermaidToSVG]);
+  }, [renderMermaidToSVG, pngResolution]);
 
   const updateMermaidGraph = useCallback(async () => {
     if (!blockInfo.content || !imageRef.current) return;

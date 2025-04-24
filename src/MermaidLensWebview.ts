@@ -166,6 +166,7 @@ export class MermaidLensWebview {
                     window.assetUrl = ${JSON.stringify(assetUrl.toString())};
                     window.vscode = acquireVsCodeApi();
                     window.exportMermaidTheme = ${JSON.stringify(vscode.workspace.getConfiguration("mermaidlens").get("exportMermaidTheme"))};
+                    window.exportPngResolution = ${JSON.stringify(vscode.workspace.getConfiguration("mermaidlens").get("exportPngResolution"))};
                 </script>
                 <script src="${scriptUri}"></script>
             </body>
