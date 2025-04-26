@@ -4,11 +4,6 @@ import { MermaidLensWebview } from "./MermaidLensWebview";
 
 export class MermaidCodeLensProvider implements vscode.CodeLensProvider {
   private regex: RegExp = /```mermaid\s*([\s\S]*?)```/g;
-  private context: vscode.ExtensionContext;
-
-  constructor(context: vscode.ExtensionContext) {
-    this.context = context;
-  }
 
   provideCodeLenses(document: vscode.TextDocument): vscode.ProviderResult<vscode.CodeLens[]> {
     const codeLenses: vscode.CodeLens[] = [];

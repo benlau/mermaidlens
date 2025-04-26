@@ -12,7 +12,9 @@
     "vscode": "^1.96.2"
   },
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "workspaceContains:**/*.md",
+    "workspaceContains:**/*.qmd"
   ],
   "main": "out/extension.js",
   "contributes": {

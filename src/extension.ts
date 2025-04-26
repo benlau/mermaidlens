@@ -4,9 +4,14 @@ import { MermaidLensWebview } from "./MermaidLensWebview";
 import { MermaidCodeLensProvider } from "./MermaidLensProvider";
 
 export function activate(context: vscode.ExtensionContext) {
-  const codeLensProvider = new MermaidCodeLensProvider(context);
-  context.subscriptions.push(
-    vscode.languages.registerCodeLensProvider("markdown", codeLensProvider),
+  vscode.languages.registerCodeLensProvider(
+    { scheme: "file", language: "markdown" },
+    new MermaidCodeLensProvider(),
+  );
+
+  vscode.languages.registerCodeLensProvider(
+    { scheme: "file", language: "quarto" },
+    new MermaidCodeLensProvider(),
   );
 
   let openLensCommand = vscode.commands.registerCommand(
