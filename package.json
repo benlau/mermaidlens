@@ -1,7 +1,7 @@
 {
   "name": "mermaidlens",
   "displayName": "Mermaid Lens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A zoomable Mermaid graph viewer for VSCode",
   "publisher": "ubw",
   "repository": {
