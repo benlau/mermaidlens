@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-
+import { MermaidConfig } from "mermaid";
 // Reference: https://code.visualstudio.com/api/references/theme-color
 
 interface ThemeColors {
@@ -16,12 +16,14 @@ interface ThemeColors {
   notificationsForeground: string;
 }
 
+export type ExportMermaidThemeType = MermaidConfig["theme"] | "auto";
+
 interface ThemeContextType {
   colors: ThemeColors;
   isDark: boolean;
   assetUrl: string;
-  mermaidTheme: string;
-  exportMermaidTheme: string;
+  mermaidTheme: MermaidConfig["theme"];
+  exportMermaidTheme: ExportMermaidThemeType;
 }
 
 const defaultTheme: ThemeColors = {
@@ -52,8 +54,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [colors, setColors] = useState<ThemeColors>(defaultTheme);
   const [isDark, setIsDark] = useState(false);
   const [assetUrl, setAssetUrl] = useState("");
-  const [mermaidTheme, setMermaidTheme] = useState("default");
-  const [exportMermaidTheme, setExportMermaidTheme] = useState("default");
+  const [mermaidTheme, setMermaidTheme] = useState<MermaidConfig["theme"]>("default");
+  const [exportMermaidTheme, setExportMermaidTheme] = useState<ExportMermaidThemeType>("default");
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
@@ -102,8 +104,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           computedStyle.getPropertyValue("--vscode-notifications-foreground").trim() ||
           defaultTheme.notificationsForeground,
       };
-
-      console.log("newColors", newColors);
 
       const bgColor = newColors.background.toLowerCase();
       const isDarkTheme = bgColor.startsWith("#")
